@@ -40,7 +40,7 @@ tests, traces, models, and proofs
 structural graph audits for bypass and drift
 ```
 
-This made the contract active rather than descriptive. It also suggested a software-factory control plane called Proofmill.
+This made the contract active rather than descriptive. It also suggested a software-factory control plane called ProofTank.
 
 ## Third direction: integrate before build
 
@@ -54,7 +54,7 @@ The ecosystem review found that many parts already exist:
 - Cavemem supplies local cross-agent memory.
 - CBM supplies structural code intelligence.
 
-Proofmill did not need to rebuild these capabilities.
+ProofTank did not need to rebuild these capabilities.
 
 ## Final pivot: Spec Kit distribution
 
@@ -79,11 +79,11 @@ GitHub Spec Kit supplies the missing process and packaging substrate:
 
 The locked product definition became:
 
-> Proofmill is an audited, risk-graded Spec Kit distribution for reliable agent-built software.
+> ProofTank is an audited, risk-graded Spec Kit distribution for reliable agent-built software.
 
 ## Novel work that remains
 
-Proofmill must provide value through curation and assurance, not a new runtime:
+ProofTank must provide value through curation and assurance, not a new runtime:
 
 1. Qualified, pinned, replaceable upstream components.
 2. Risk-graded profiles.
@@ -97,7 +97,7 @@ Proofmill must provide value through curation and assurance, not a new runtime:
 
 LLMs are good at producing functional output.
 
-Proofmill must help them produce useful output:
+ProofTank must help them produce useful output:
 
 - Grounded in existing knowledge.
 - Complete enough to cover important edge cases.

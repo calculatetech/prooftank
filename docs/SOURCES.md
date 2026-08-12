@@ -29,6 +29,6 @@ These sources shaped the bootstrap direction. Verify current versions before imp
 ## Use of these sources
 
 - Upstream documentation supplies candidate capability and integration facts.
-- Proofmill qualification must verify source code and runtime behavior.
+- ProofTank qualification must verify source code and runtime behavior.
 - arXiv content supplies prior art, not automatic authority.
 - Community catalogs supply discovery, not approval.

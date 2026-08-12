@@ -10,7 +10,7 @@
 - License: MIT, copyright GitHub, Inc.
 - Activity: The reviewed commit was current on 2026-08-11. On 2026-08-12,
   upstream `HEAD` was `7dd706880e73cd05ccda95fb8d5ce6cf2d652ae4`.
-  Proofmill did not update because that commit has not been qualified.
+  ProofTank did not update because that commit has not been qualified.
 
 ## Capability and trust
 
@@ -76,16 +76,16 @@ The built-in integration, preset, workflow, workflow-step, extension, and
 bundle catalog stacks have a default source and a community source. The default
 source is install-allowed. The community source is discovery-only. Spec Kit
 calls some default entries official, but this means upstream-maintained; it does
-not mean independently audited by Proofmill.
+not mean independently audited by ProofTank.
 
 Community maintainers check submission metadata and format. They do not review,
 audit, endorse, or support the component code. Catalog `verified` metadata has
-no Proofmill approval effect. An explicit project or user catalog can be marked
+no ProofTank approval effect. An explicit project or user catalog can be marked
 install-allowed, and a direct `--from` URL can bypass catalog selection after a
-warning. Both paths still need Proofmill qualification.
+warning. Both paths still need ProofTank qualification.
 
 The built-in catalog URLs use the upstream `main` branch. The reviewed Spec Kit
-commit does not pin their future contents. Proofmill therefore records every
+commit does not pin their future contents. ProofTank therefore records every
 accepted component with its own exact commit or release in
 `upstream/registry.yml`.
 
@@ -149,8 +149,8 @@ owner.
 
 - `specify version --features --json` reported `0.16.3.dev0` and workflow
   support.
-- The CLI installed the Codex integration, the Proofmill preset, and the
-  Proofmill workflow in a clean fixture.
+- The CLI installed the Codex integration, the ProofTank preset, and the
+  ProofTank workflow in a clean fixture.
 - The CLI listed default extension, preset, workflow, workflow-step,
   integration, and bundle sources as install-allowed and their community
   sources as discovery-only.
@@ -169,7 +169,7 @@ owner.
 
 A local bundle does not install custom component directories carried beside
 `bundle.yml`. Custom components need prior local installation or install-allowed
-HTTPS catalogs. The local Proofmill bundle therefore records two already
+HTTPS catalogs. The local ProofTank bundle therefore records two already
 installed components and reports `0 added`.
 
 Core `speckit.analyze` and `speckit.converge` use agent judgment. They do not

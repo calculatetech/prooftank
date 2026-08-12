@@ -1,0 +1,82 @@
+schema_version: "0.1-draft"
+product:
+  name: ProofTank
+  category: audited assurance distribution
+  tagline: Ideas in. Bounded work and evidence-backed software out.
+
+source_of_truth:
+  repository: true
+  agent_memory: false
+  external_dashboard: false
+  specification_owner: github-spec-kit
+
+license_policy:
+  default: permissive-only
+  accepted_without_exception:
+    - MIT
+    - Apache-2.0
+    - BSD-2-Clause
+    - BSD-3-Clause
+  exception_process: human-review
+  excluded_by_current_decision:
+    - AGPL-3.0
+
+profiles:
+  lite:
+    status: design-only
+    purpose: low-risk patch or local feature
+    required_capabilities:
+      - specification
+      - minimal-implementation
+      - native-verification
+    optional_capabilities:
+      - controlled-language
+  standard:
+    status: supported-codex-mvp
+    purpose: normal product feature or non-trivial bug fix
+    required_capabilities:
+      - specification
+      - bounded-work-packet
+      - controlled-language
+      - minimal-implementation
+      - traceability
+      - native-verification
+      - explicit-evidence-state
+    optional_capabilities: []
+  critical:
+    status: postponed
+    purpose: durable state, concurrency, finance, security, ABI, or costly architecture
+    required_capabilities:
+      - specification
+      - bounded-work-packet
+      - controlled-language
+      - prior-art-research
+      - adversarial-design-review
+      - minimal-implementation
+      - bidirectional-traceability
+      - stronger-verification
+      - explicit-evidence-state
+    optional_capabilities:
+      - structural-code-intelligence
+      - cross-session-memory
+      - formal-methods
+      - mutation-testing
+      - fuzzing
+
+trust_classes:
+  authoritative:
+    description: reviewed repository artifacts and human approvals
+  deterministic:
+    description: reproducible scripts and project-native tools
+  observational:
+    description: structural or runtime observations that can be incomplete
+  advisory:
+    description: agent-generated research, design, review, or memory proposals
+
+policy:
+  unknown_passes: false
+  degraded_optional_provider_blocks: false
+  degraded_required_provider_blocks: true
+  automatic_provider_switch: false
+  agent_can_approve_own_waiver: false
+  agent_can_change_contract_silently: false

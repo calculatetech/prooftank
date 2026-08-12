@@ -6,7 +6,7 @@ These decisions are locked for the bootstrap milestone. Change one only through 
 
 ## D001 — Product name
 
-**Decision:** Use the working name `Proofmill`.
+**Decision:** Use the original working name `Proofmill`.
 
 **Reason:** The product turns intent and implementation attempts into evidence-backed output.
 
@@ -15,7 +15,7 @@ owns the identifier migration.
 
 ## D002 — Product boundary
 
-**Decision:** Proofmill is an assurance distribution, not an agent runtime.
+**Decision:** ProofTank is an assurance distribution, not an agent runtime.
 
 **Reason:** Codex, Claude Code, OpenCode, Pi, and OpenHarness already provide agent loops, tools, context, and user interfaces.
 
@@ -45,7 +45,7 @@ owns the identifier migration.
 
 **Status:** Accepted.
 
-**Consequence:** Cavekit is a design reference in version 0. Its right-size, compact-spec, drift, and backprop principles can inform the Proofmill preset.
+**Consequence:** Cavekit is a design reference in version 0. Its right-size, compact-spec, drift, and backprop principles can inform the ProofTank preset.
 
 ## D006 — Minimal implementation provider
 
@@ -108,7 +108,7 @@ boundary.
 
 ## D013 — Version 0 implementation
 
-**Decision:** Do not build a Proofmill daemon, database, MCP aggregator, code graph, memory system, or agent loop.
+**Decision:** Do not build a ProofTank daemon, database, MCP aggregator, code graph, memory system, or agent loop.
 
 **Reason:** Existing tools already own these capabilities. A gap must be measured before code is added.
 
@@ -148,7 +148,7 @@ boundary.
 
 ## D018 — Build only after gap test
 
-**Decision:** Before creating a Proofmill extension, compare current Spec Kit core and community extensions against the requirement.
+**Decision:** Before creating a ProofTank extension, compare current Spec Kit core and community extensions against the requirement.
 
 **Reason:** Curation and conformance are the product. Duplication is not.
 
@@ -193,7 +193,7 @@ be represented as failed, stale, degraded, unavailable, or unknown.
 
 **Decision:** The supported MVP composition is Codex, GitHub Spec Kit,
 Ponytail, SimpleEnglish, project-native tests and lint, and declarative
-Proofmill files. No optional runtime provider is active.
+ProofTank files. No optional runtime provider is active.
 
 **Reason:** CBM and Cavemem cross prohibited product boundaries. NeuroArxiv and
 ADHD cannot run under current Codex-only and coordination rules. Cavekit is a
@@ -215,4 +215,5 @@ collision in the bounded web, GitHub, package-registry, or DNS screen. The owner
 accepts the remaining naming risk for a project that is not formally marketed.
 
 **Status:** Accepted. This is a working-name decision, not legal or trademark
-clearance. PM-036 owns the migration.
+clearance. PM-036 completed the live identifier migration while preserving the
+immutable Proofmill `0.1.0` release and frozen benchmark evidence.

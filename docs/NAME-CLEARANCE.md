@@ -81,11 +81,9 @@ On 2026-08-12, the owner decided that this is not a formally marketed product
 and accepted `ProofTank` for the hobby project. No trademark registration,
 package reservation, domain reservation, or legal-clearance claim was made.
 
-PM-036 owns the repository-wide migration. It must change human-facing names,
-machine identifiers, paths, release metadata, and checksum manifests together,
-then repeat the local install and Codex validation. Until PM-036 completes,
-release `0.1.0` remains valid only under its current exact `Proofmill` names and
-hashes.
+PM-036 migrated the live repository name, machine identifiers, paths, release
+metadata, and checksum manifest together. The historical release `0.1.0`
+remains valid only under its exact `Proofmill` names and hashes.
 
 Repeat the collision search before any formal commercialization or trademark
 filing and obtain qualified advice if the project's scope changes.

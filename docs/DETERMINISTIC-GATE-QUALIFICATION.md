@@ -4,11 +4,11 @@
 
 ## Decision
 
-Select no provider for `proofmill-standard` in PM-026. Keep the existing
+Select no provider for `prooftank-standard` in PM-026. Keep the existing
 project-native test and lint fallback. Missing deterministic coverage remains
 `unknown`.
 
-This is a `revise` result. It is not permission to build a Proofmill gate or
+This is a `revise` result. It is not permission to build a ProofTank gate or
 start the checkbook benchmark.
 
 ## Current source screen
@@ -43,7 +43,7 @@ suite passed after installing its locked npm dependencies and declared
 ShellCheck version. Direct tests proved distinct success, gate-failure, and
 malformed-input states.
 
-It still does not meet the Proofmill contract. A `Complete` feature with checked
+It still does not meet the ProofTank contract. A `Complete` feature with checked
 tasks and no executable acceptance block returned success. Its health check
 also called that feature enforced. The release has no deterministic rule that
 maps every `REQ-*` and `INV-*` identifier to an executable check.

@@ -1,0 +1,21 @@
+{
+  "arms": {
+    "bare": {"files": {"PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5", "checkbook.py": "b6dbec21e13133ead196037ea292707cab22b5673401f666b7cc596c59903eeb", "test_checkbook.py": "7453762d533d8c78b89bb386d18c19b0c498995550749fcc25f5cb8dc99f69ce"}},
+    "ponytail": {"files": {"PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5", "checkbook.py": "7796d1609b6acb2300a6cd7e02338eff31060e5f9a4cbc31b9b92772a1bb7436", "test_checkbook.py": "8a8e809536c59d18b3603096938559dd19c145b81e59c768f97c16053ee50694"}},
+    "cavekit-ponytail": {"files": {"PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5", "checkbook.py": "854268169b71884021e80da52eda952bb7f24b5f41c2afe3c247a654a8deb779", "test_checkbook.py": "7efa81ec3f869e60be7c5ce3c134e6e886b45c45e37b1ce510e1170cce2348b6"}},
+    "spec-kit-core": {"files": {"PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5", "checkbook.py": "d4394a858298a5eb9f906a3294a3a821ceae983f92fd8ed165770b4ccf270697", "test_checkbook.py": "ccd5b574566a2b8f96e6dcda09e4ca2f85f4102fdd181f4cf4294ee8f05d8a04"}},
+    "proofmill-standard": {"files": {"PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5", "checkbook.py": "f3102ecc55ee81402a964214720dd761dd655fae842fca59cafbdc8f194a3b28", "test_checkbook.py": "2af1ac10d9a69023f037e832dcf08f2ddd52077a0a63ec117cf90fff1def0f2c"}}
+  },
+  "batch_id": "first-comparable-001",
+  "batch_audit_sha256": "67dc4383f116c1eb8192049f061b3eaab071ca0be659bcd294258fb0bd1661a1",
+  "hidden_suite_sha256": "5822d5eca6049ba60856e76a32ca5b773504981629683329a89193f3b2b9f354",
+  "derivation": "Hashes of the unchanged generated runtime and test files preserved immediately before PM-037 review.",
+  "rescored_result_sha256": {
+    "bare": "b9f65b8a2ce14e318f4f8558b3331fde7c4bfa2dff4aecfb24c089c634d6f554",
+    "cavekit-ponytail": "6049649b6e97aa7c4bc2b3e24d28b0fb8bf1977e3151c66d0ba42f365196bd40",
+    "ponytail": "82ede586335f1ff7a0e0375b0d39dc9d18fbf77c92ec030f208dcc59b9a6f526",
+    "proofmill-standard": "1d8450affbb60e91a1646c670fb8197892926bc4f6e461c3ac231312cd12defc",
+    "spec-kit-core": "6e0c5c5441d022db7a6a3502c1f78abc4077f95349535d90ad272a51f23dc948"
+  },
+  "schema_version": "1.0"
+}

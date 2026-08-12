@@ -1,0 +1,57 @@
+{
+  "reports": {
+    "candidate-1": {
+      "review-1.json": "d2e7eba52faf8394d11f14dfc1bea0b7a9e1b983cbc7c9af0f3d82e67cc67025",
+      "review-2.json": "7f3a68e04f334f5dd33edf3e6aa57286beb59c762badc91bfae18e5e42da9aa1"
+    },
+    "candidate-2": {
+      "review-1.json": "44fdd4e7858b73d41372420a51c9bc4405fef4a830e2916ef183f9c44e9402e5",
+      "review-2.json": "7189aed9f6ce7a45db0688135b52f24a8294c10a6890f669c7d64fa91c7d2762"
+    },
+    "candidate-3": {
+      "review-1.json": "adb1bbef88e1da8b3964fa6321b6445d3ade553c60039b50e67b4da3b39cc667",
+      "review-2.json": "64a4f3f6daa1ac9f09a15d22d59320dcdf80f620d81e4ff4c26693c2b37535e0"
+    },
+    "candidate-4": {
+      "review-1.json": "921b869f61464caec3cc2407f9ca6bc77f29ede87aec681fecfb0f525e1e4717",
+      "review-2.json": "372341c8142151eaf9f3c2227167134fa7de74538817459d1c7b00e17ffced3b"
+    },
+    "candidate-5": {
+      "review-1.json": "76ad40a2529e46f6962bc5aae834b09bf57779b1a2f89512d532405d8138acb2",
+      "review-2.json": "e51b1dd03b512db47435339fc09a6fb98c1279a021770c9b60a15583f8787a41"
+    }
+  },
+  "reviewer_assignments": {
+    "/root/quality_c1_r1": [
+      "candidate-1"
+    ],
+    "/root/quality_c1_r2": [
+      "candidate-1"
+    ],
+    "/root/quality_c2_r1": [
+      "candidate-2"
+    ],
+    "/root/quality_c2_r2": [
+      "candidate-2"
+    ],
+    "/root/quality_c3_r1": [
+      "candidate-3"
+    ],
+    "/root/quality_c3_r2": [
+      "candidate-3"
+    ],
+    "/root/quality_c4_r1": [
+      "candidate-4"
+    ],
+    "/root/quality_c4_r2": [
+      "candidate-4"
+    ],
+    "/root/quality_c5_r1": [
+      "candidate-5"
+    ],
+    "/root/quality_c5_r2": [
+      "candidate-5"
+    ]
+  },
+  "schema_version": "1.0"
+}

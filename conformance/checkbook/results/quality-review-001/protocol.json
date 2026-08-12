@@ -1,0 +1,42 @@
+{
+  "app_reviews_per_candidate": 2,
+  "candidate_count": 5,
+  "comparison_order": [
+    "critical_findings",
+    "high_findings",
+    "production_blockers",
+    "security_findings",
+    "replicated_finding_classes",
+    "perceived_quality_dimensions",
+    "efficiency_context"
+  ],
+  "generated_files_only": [
+    "PRODUCT-BRIEF.md",
+    "checkbook.py",
+    "test_checkbook.py"
+  ],
+  "finding_class_rule": "Two reports replicate a class when they identify the same root cause and impact. One-report classes remain exploratory. Conflicting severity uses the higher severity until blind adjudication.",
+  "reviewer_settings": {
+    "context": "clean",
+    "effort": "high",
+    "model": "gpt-5.6-sol",
+    "tools": "read candidate; run only supplied sandbox command",
+    "write_access": false
+  },
+  "report_names": ["review-1.json", "review-2.json"],
+  "rubric_sha256": "bdbf586b6dac952d387e964df86dba4c0381aae2f5c11749840d78fdf03103f0",
+  "sandbox_sha256": "f96fa2a51d69268a497d0d5a39f2d0ada5b58372f1bd59252c3ff6e9d6f37a83",
+  "reviewer_context_excludes": [
+    "arm identity",
+    "treatment inputs",
+    "Git history",
+    "process documents",
+    "raw model logs",
+    "efficiency results",
+    "other candidate reports",
+    "private mapping and named source manifests"
+  ],
+  "rubric": "../../QUALITY-AUDIT.md",
+  "sandbox": "sandbox.py",
+  "schema_version": "1.0"
+}

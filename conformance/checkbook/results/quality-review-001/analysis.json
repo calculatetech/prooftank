@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0",
+  "decision": "proceed",
+  "benchmark_discriminating": true,
+  "primary_direction": "Measure and deterministically verify single-owner business transitions before adding more process or explanation.",
+  "limits": [
+    "One generated application per arm does not establish a provider-wide effect.",
+    "Review findings and scores are advisory until a deterministic check reproduces them.",
+    "Readability and accidental-complexity scores saturated at 4/5 for every arm and do not distinguish this task.",
+    "Compact report artifacts preserve reviewer classifications, scores, and evidence locations; they are structured records, not verbatim transcripts."
+  ],
+  "arms": {
+    "bare": {
+      "candidate_id": "candidate-5",
+      "finding_counts_across_two_reviews": {"critical": 1, "high": 4, "medium": 3, "low": 0},
+      "production_blockers_per_review": [4, 3],
+      "readiness_scores": [2, 2],
+      "dimension_means": {"single_outcome_ownership": 3.0, "code_alone_readability": 4.0, "accidental_complexity": 4.0},
+      "replicated_finding_classes": ["concurrent check-then-write transitions", "operation identity lost on import and reconciliation errors", "later reversal blocked by original closed date"]
+    },
+    "ponytail": {
+      "candidate_id": "candidate-3",
+      "finding_counts_across_two_reviews": {"critical": 0, "high": 5, "medium": 5, "low": 1},
+      "production_blockers_per_review": [2, 4],
+      "readiness_scores": [2, 2],
+      "dimension_means": {"single_outcome_ownership": 3.0, "code_alone_readability": 4.0, "accidental_complexity": 4.0},
+      "replicated_finding_classes": ["non-atomic version updates", "closed-period rows remain reconciliation candidates", "ambiguous imported identifiers", "unbounded CSV input"]
+    },
+    "cavekit-ponytail": {
+      "candidate_id": "candidate-1",
+      "finding_counts_across_two_reviews": {"critical": 0, "high": 3, "medium": 5, "low": 1},
+      "production_blockers_per_review": [4, 1],
+      "readiness_scores": [2, 2],
+      "dimension_means": {"single_outcome_ownership": 2.5, "code_alone_readability": 4.0, "accidental_complexity": 4.0},
+      "replicated_finding_classes": ["mutation decision and returned result are not one atomic outcome", "integer/storage exceptions escape the public model", "unbounded CSV input"]
+    },
+    "spec-kit-core": {
+      "candidate_id": "candidate-4",
+      "finding_counts_across_two_reviews": {"critical": 0, "high": 3, "medium": 4, "low": 0},
+      "production_blockers_per_review": [1, 2],
+      "readiness_scores": [3, 2],
+      "dimension_means": {"single_outcome_ownership": 4.0, "code_alone_readability": 4.0, "accidental_complexity": 4.0},
+      "replicated_finding_classes": ["commit failure bypasses rollback and stable error handling", "money domain exceeds SQLite INTEGER", "unbounded CSV input"]
+    },
+    "proofmill-standard": {
+      "candidate_id": "candidate-2",
+      "finding_counts_across_two_reviews": {"critical": 0, "high": 4, "medium": 4, "low": 0},
+      "production_blockers_per_review": [2, 2],
+      "readiness_scores": [2, 2],
+      "dimension_means": {"single_outcome_ownership": 3.0, "code_alone_readability": 4.0, "accidental_complexity": 4.0},
+      "replicated_finding_classes": ["business preconditions outside write transactions", "storage failures escape stable errors", "unbounded CSV input"]
+    }
+  },
+  "conclusions": [
+    "Spec Kit core was the only arm whose two reviewers both scored single-outcome ownership 4/5; its explicit transaction wrapper kept reads, writes, audit, and returned results together.",
+    "Proofmill standard did not preserve that advantage in this generation and did not improve readiness over the bare or instruction-only arms.",
+    "All arms were readable and low in accidental complexity, so more prose or fewer lines is not the present bottleneck.",
+    "The next benchmark investment should convert replicated review classes into deterministic concurrency, closure, reversal, storage-failure, numeric-boundary, and input-limit checks.",
+    "No replacement application is needed for direction: checkbook exposed material differences despite identical 15-scenario pass results."
+  ]
+}

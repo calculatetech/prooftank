@@ -40,17 +40,72 @@ class ControllerTest(unittest.TestCase):
     def test_audit_requires_every_arm_and_identical_inputs(self):
         with tempfile.TemporaryDirectory() as directory:
             batch = Path(directory)
+            manifests = {}
+            for arm in CONTROLLER.ARMS:
+                path = batch / "repositories" / arm / "INPUT-MANIFEST.json"
+                CONTROLLER.write_json(path, {"arm": arm})
+                manifests[arm] = CONTROLLER.sha256(path)
+            CONTROLLER.write_json(
+                batch / "input-audit.json",
+                {"valid": True, "manifest_sha256": manifests},
+            )
+            CONTROLLER.write_json(
+                batch / "batch.json",
+                {
+                    "specify": {"commit": CONTROLLER.SPEC_KIT_COMMIT},
+                    "hidden_suite_sha256": CONTROLLER.HIDDEN_SUITE_SHA256,
+                },
+            )
             for arm in CONTROLLER.ARMS:
                 result = {
+                    "schema_version": "2.0",
                     "arm": arm,
                     "brief_sha256": CONTROLLER.BRIEF_SHA256,
                     "prompt_sha256": CONTROLLER.PROMPT_SHA256,
+                    "hidden_suite_sha256": CONTROLLER.HIDDEN_SUITE_SHA256,
                     "codex_version": "codex-cli 0.147.0",
                     "model": CONTROLLER.MODEL,
                     "reasoning_effort": CONTROLLER.EFFORT,
+                    "sandbox": "workspace-write",
+                    "timeout_seconds": 1800,
+                    "python_version": "3.14.4",
+                    "platform": "test-platform",
+                    "metrics": {"source_lines": 1},
+                    "terminal_state": "completed",
+                    "codex_returncode": 0,
+                    "hidden_returncode": 0,
+                    "hidden": {"successful": True, "passed": 15, "failed": 0},
+                    "scenario_outcomes": {
+                        "passed": [f"test-{index}" for index in range(15)],
+                        "failures": [],
+                    },
+                    "generated_files_sha256": {"checkbook.py": "hash"},
                 }
                 CONTROLLER.write_json(batch / "results" / f"{arm}.json", result)
             self.assertTrue(CONTROLLER.audit_batch(batch)["comparable"])
+            changed = json.loads((batch / "results/bare.json").read_text())
+            changed["timeout_seconds"] = 60
+            CONTROLLER.write_json(batch / "results/bare.json", changed)
+            self.assertFalse(CONTROLLER.audit_batch(batch)["comparable"])
+            changed["timeout_seconds"] = 1800
+            changed["arm"] = "ponytail"
+            CONTROLLER.write_json(batch / "results/bare.json", changed)
+            self.assertFalse(CONTROLLER.audit_batch(batch)["comparable"])
+
+            changed = json.loads((batch / "results/bare.json").read_text())
+            changed["arm"] = "bare"
+            changed.pop("terminal_state")
+            CONTROLLER.write_json(batch / "results/bare.json", changed)
+            self.assertFalse(CONTROLLER.audit_batch(batch)["comparable"])
+            changed["terminal_state"] = "completed"
+            CONTROLLER.write_json(batch / "results/bare.json", changed)
+
+            changed["arm"] = "bare"
+            CONTROLLER.write_json(batch / "results/bare.json", changed)
+            CONTROLLER.write_json(
+                batch / "repositories/bare/INPUT-MANIFEST.json", {"arm": "changed"}
+            )
+            self.assertFalse(CONTROLLER.audit_batch(batch)["comparable"])
             (batch / "results/bare.json").unlink()
             self.assertFalse(CONTROLLER.audit_batch(batch)["comparable"])
 

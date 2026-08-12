@@ -2,12 +2,12 @@
 
 ## Status
 
-Proofmill Standard `0.1.0` is ready for a local Codex pilot. It is not a
+ProofTank Standard `0.2.0` is ready for a local Codex pilot. It is not a
 published package or a cleared public product name. Codex is the only supported
 MVP harness. The owner accepted `ProofTank` as the working name for this
 open-source hobby project. [Name research](NAME-CLEARANCE.md) records the limits
-of that decision. Existing `Proofmill` identifiers remain exact until PM-036
-validates the migration.
+of that decision. PM-036 validated the live identifier migration and preserved
+the historical Proofmill `0.1.0` release unchanged.
 
 The pilot shows that the pinned composition installs, keeps a bounded contract,
 and reports missing evidence as `unknown`. It does not show a quality advantage,
@@ -17,12 +17,12 @@ lower lifecycle cost, or a release warrant.
 
 Use an empty target repository. You need Codex, Git, Python 3 with `venv`, and
 `sha256sum`. You also need network access while Python installs the exact GitHub
-Spec Kit commit. The Proofmill release needs no network access after that.
+Spec Kit commit. The ProofTank release needs no network access after that.
 
 ## Install and check health
 
 Follow the exact commands in the
-[`0.1.0` release guide](../releases/proofmill-standard/0.1.0/README.md). Do not
+[`0.2.0` release guide](../releases/prooftank-standard/0.2.0/README.md). Do not
 replace its commit, version, or hashes with a branch or an unpinned package.
 
 Installation is healthy only when all of these checks pass:
@@ -31,7 +31,7 @@ Installation is healthy only when all of these checks pass:
 - Spec Kit reports `0.16.3.dev0`;
 - the Ponytail and SimpleEnglish hashes match the release guide;
 - `specify preset resolve spec-template` succeeds; and
-- `specify workflow info proofmill-standard` succeeds.
+- `specify workflow info prooftank-standard` succeeds.
 
 Keep specifications, plans, tasks, test output, and lint output in the target
 repository. Provider output alone is not proof.
@@ -44,13 +44,15 @@ repository. Provider output alone is not proof.
 - [SimpleEnglish review](../upstream/reviews/simple-english.md)
 - [Codex qualification result](BOOTSTRAP-GAP-REPORT.md)
 - [First comparable checkbook result](../conformance/checkbook/results/first-comparable-001/README.md)
-- [Claims Proofmill does not make](WHAT-PROOFMILL-DOES-NOT-PROVE.md)
+- [Claims ProofTank does not make](WHAT-PROOFTANK-DOES-NOT-PROVE.md)
 
-The benchmark used one run per arm. All five arms passed the 15 accepted
-scenarios. Ponytail-only used the least measured time, tools, and tokens.
-Proofmill Standard did not improve accepted behavior. Cost, mutation score,
-change-request regression, diagnosis time, and general model behavior remain
-`unknown`.
+The benchmark used one generated application per arm. All five arms passed the
+15 accepted scenarios. Two blind reviews per output then found no
+production-ready arm. Spec Kit core showed the clearest single-outcome
+ownership; the historical Proofmill Standard arm, ProofTank's predecessor, did
+not preserve that advantage. ProofTank Standard 0.2.0 has lifecycle
+qualification only. The benchmark result is directional, not a provider-wide
+effect.
 
 ## Contribute or replace a provider
 
@@ -73,7 +75,7 @@ report through the
 ## Disable or uninstall
 
 Use only the exact disable and uninstall commands in the
-[`0.1.0` release guide](../releases/proofmill-standard/0.1.0/README.md). Disabling
+[`0.2.0` release guide](../releases/prooftank-standard/0.2.0/README.md). Disabling
 a required provider makes workflow preflight stop. Uninstall removes the local
 Spec Kit integration and provider directories but preserves repository-owned
 specifications, plans, tasks, and source files.

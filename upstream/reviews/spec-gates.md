@@ -21,8 +21,8 @@ blocks from one policy. Its local shell scripts give clear pass and fail exit
 states for the inputs they execute.
 
 Trust class: deterministic for an explicit configured check, but not
-authoritative. It does not prove that every Proofmill requirement or invariant
-has a check. A passing run cannot become a Proofmill release claim.
+authoritative. It does not prove that every ProofTank requirement or invariant
+has a check. A passing run cannot become a ProofTank release claim.
 
 ## Installation and written state
 
@@ -109,9 +109,9 @@ The following blockers prevent selection:
 
 - A feature marked `Complete` with checked tasks but no executable acceptance
   blocks returned exit 0. `doctor` also returned exit 0 and called the feature
-  enforced. Proofmill needs missing deterministic coverage to stay `unknown`.
+  enforced. ProofTank needs missing deterministic coverage to stay `unknown`.
 - The release does not require or validate one acceptance block for every
-  Proofmill requirement and invariant ID.
+  ProofTank requirement and invariant ID.
 - Current Spec Kit reported that the policy template was not scaffolded. An
   agent conversation, not the installer, creates the operational gate.
 - Disable and uninstall do not stop or remove projected enforcement.
@@ -127,7 +127,7 @@ security, or the minimum trusted surface. The candidate is blocked.
 ## Fallback
 
 Keep project-native tests, lint, and schema checks. Record missing
-requirement-to-check coverage as `unknown`. Do not add a Proofmill gate or
+requirement-to-check coverage as `unknown`. Do not add a ProofTank gate or
 claim a release warrant. Reconsider a later release only if it requires
 deterministic coverage, fixes its dependencies, and has a complete disable and
 uninstall path.

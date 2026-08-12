@@ -1,0 +1,33 @@
+{
+  "known_gaps": [
+    "blank account, transaction, source, and reversal identifiers",
+    "blank operation identifiers outside import and reconciliation",
+    "incorrect CSV header names or order",
+    "storage failure injection during import or audit writes",
+    "closed-period clearing and reversal at the exact boundary",
+    "duplicate imported identity scoped across accounts and sources",
+    "stable error-code expectations for every public method",
+    "deterministic event identifiers across repeated fresh databases",
+    "hostile CSV size and denial-of-service boundaries",
+    "database corruption, disk-full recovery, backup, and migration behavior"
+  ],
+  "scenario_confidence": {
+    "test_req_01_account_currency_and_opening_balance": "Account shape and uppercase currency rejection for one invalid value.",
+    "test_req_02_integer_money_and_signs": "Debit, credit, float, and bool money behavior.",
+    "test_req_03_transaction_shape_and_deterministic_order": "Required transaction keys, initial flags, and identifier ordering.",
+    "test_req_04_edit_clear_and_expected_version": "Edit and clear version increments plus one stale write.",
+    "test_req_05_import_success_and_idempotent_duplicate": "Successful import and one identical retry.",
+    "test_req_06_conflicting_duplicate_is_atomic": "One conflicting duplicate after a new row does not publish partial state.",
+    "test_req_07_malformed_middle_row_and_retry": "Malformed date aborts a multi-row import and permits retry.",
+    "test_req_08_reconcile_and_mismatch_are_atomic": "One reconciliation mismatch leaves state and audit unchanged.",
+    "test_req_09_reconciled_history_uses_one_linked_reversal": "Reconciled edit rejection and one linked reversal limit.",
+    "test_req_10_closed_period_prevents_historical_mutation": "New and edited historical rows plus backward close rejection.",
+    "test_req_11_two_connections_detect_lost_edit": "Two SQLite connections reject one stale edit.",
+    "test_req_12_every_successful_command_is_audited": "One happy path records ordered operation identifiers for each command.",
+    "test_req_13_state_survives_restart_after_abort": "Committed state survives restart after one aborted import.",
+    "test_req_14_real_calendar_dates": "One leap date passes and one invalid leap date fails.",
+    "test_req_15_failure_operation_ids_are_structured": "Import and reconciliation failures preserve supplied operation identifiers."
+  },
+  "schema_version": "1.0",
+  "suite_sha256": "5822d5eca6049ba60856e76a32ca5b773504981629683329a89193f3b2b9f354"
+}

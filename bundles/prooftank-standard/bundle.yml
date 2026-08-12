@@ -1,0 +1,33 @@
+schema_version: "1.0"
+
+bundle:
+  id: "prooftank-standard"
+  name: "ProofTank Standard"
+  version: "0.2.0"
+  role: "developer"
+  description: "A bounded standard-risk Spec Kit contract and workflow for Codex."
+  author: "ProofTank"
+  license: "MIT"
+
+requires:
+  speckit_version: "==0.16.3.dev0"
+  tools: []
+  mcp: []
+
+integration:
+  id: "codex"
+
+provides:
+  presets:
+    - id: "prooftank-contract"
+      version: "0.2.0"
+      priority: 10
+      strategy: "append"
+  workflows:
+    - id: "prooftank-standard"
+      version: "0.2.0"
+
+tags:
+  - "assurance"
+  - "standard"
+  - "codex"

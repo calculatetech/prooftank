@@ -81,7 +81,7 @@ are `codebase-memory-mcp --version`, `codebase-memory-mcp install --dry-run`,
 observational; it must be compared with the current repository revision and
 native search.
 
-Do not install CBM in Proofmill Standard. If it was installed separately,
+Do not install CBM in ProofTank Standard. If it was installed separately,
 disable it by removing its exact Codex MCP entry and owned lifecycle hooks, or
 by moving its exact skill and agent profiles outside Codex discovery paths.
 Then restart Codex and use native repository tools.
@@ -117,5 +117,5 @@ blocked for the MVP without downloading or executing its release binary.
 
 Use `rg`, direct file reads, Git, project-native analysis, tests, and lint. Mark
 unknown any claim that those tools do not deterministically support. Keep CBM
-visible as a rejected candidate and reconsider it only if Proofmill's product
+visible as a rejected candidate and reconsider it only if ProofTank's product
 boundary changes through an explicit decision.

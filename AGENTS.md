@@ -4,9 +4,9 @@ This file is the map. The documents in `docs/` are the source of truth.
 
 ## Mission
 
-Build Proofmill as an audited assurance distribution for existing coding-agent harnesses.
+Build ProofTank as an audited assurance distribution for existing coding-agent harnesses.
 
-Proofmill packages and qualifies existing tools. It adds only the missing deterministic seams.
+ProofTank packages and qualifies existing tools. It adds only the missing deterministic seams.
 
 ## Read first
 
@@ -25,7 +25,7 @@ Proofmill packages and qualifies existing tools. It adds only the missing determ
 - Codex is the only supported MVP harness and remains the user interface.
 - Other harness work is postponed and must not enter MVP artifacts.
 - One project has one authoritative specification system.
-- Proofmill version 0 does not own a daemon, database, agent loop, code graph, memory system, or MCP aggregator.
+- ProofTank version 0 does not own a daemon, database, agent loop, code graph, memory system, or MCP aggregator.
 - Repository files and Git history own project truth.
 - Upstream providers are swappable and optional unless the selected profile marks them required.
 - Missing or degraded evidence is `unknown`. It is not `passed`.

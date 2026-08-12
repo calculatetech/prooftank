@@ -35,14 +35,14 @@ Exit criteria:
 - Every selected component has a health, failure, disable, uninstall, and fallback plan.
 - No unreviewed community extension is enabled by default.
 
-## Milestone 2 — Proofmill Standard composition
+## Milestone 2 — ProofTank Standard composition
 
 Deliver:
 
 - current-valid Spec Kit preset;
 - standard workflow;
 - installable bundle or catalog entry;
-- Proofmill contract template;
+- ProofTank contract template;
 - bounded work-packet template;
 - deterministic artifact-consistency checks using existing extensions where possible.
 
@@ -78,7 +78,7 @@ Deliver:
 - Ponytail-only arm;
 - Cavekit-plus-Ponytail comparison arm;
 - Spec Kit core arm;
-- Proofmill Standard arm;
+- historical Proofmill Standard arm, ProofTank's predecessor;
 - hidden acceptance and fault suite;
 - token, tool, time, LOC, dependency, defect, rework, and diagnosis measurements.
 
@@ -125,7 +125,7 @@ runtime code is authorized by the MVP evidence.
 
 Exit criteria:
 
-- Every new Proofmill code module has a written rejected-upstream analysis.
+- Every new ProofTank code module has a written rejected-upstream analysis.
 - The custom implementation is smaller and safer than the alternatives.
 
 ## Milestone 7 — Public pilot

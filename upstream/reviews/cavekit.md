@@ -9,7 +9,7 @@
 - License: MIT, copyright Julius Brussee.
 
 Qualification state: `approved-comparison-only`. Cavekit is not an active
-Proofmill provider or specification owner.
+ProofTank provider or specification owner.
 
 ## Capability and trust
 
@@ -65,4 +65,4 @@ its named arm.
 
 The upstream installation paths are mutable or Claude-specific. They are not
 approved for this Codex benchmark. Cavekit must not become a second
-specification owner in the Spec Kit or Proofmill arms.
+specification owner in the Spec Kit or ProofTank arms.

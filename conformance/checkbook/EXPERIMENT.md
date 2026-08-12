@@ -133,8 +133,27 @@ Use `unknown`, not zero, for an unavailable measurement.
 
 ## Main economic metrics
 
-Report lifecycle cost per accepted capability only when cost data exists.
-Always report tool calls, wall time, accepted capabilities, hidden scenarios,
-source lines, test lines, and scope additions.
+The original economic ranking is superseded. Passing scenarios, tool calls,
+wall time, tokens, source lines, test lines, and scope additions are descriptive
+context. They are not success measures and cannot establish a quality winner.
+
+## Generated application quality review
+
+Success is measured primarily through clean-context review of frozen generated
+applications. Every candidate receives two independent blind audits using
+`QUALITY-AUDIT.md`. Reviewers see only the common brief, runtime source, and
+repository tests. They do not see arm identity, treatment inputs, Git history,
+process documents, model logs, efficiency results, or another review.
+
+Generated Python runs only through `sandbox.py`, which removes network access,
+credentials, and host filesystem visibility. Each candidate snapshot and review
+report is content-addressed and validated before comparison.
+
+Compare critical and high findings, production blockers, security findings,
+replicated defect classes, single outcome ownership, code-alone readability,
+cohesion, change locality, invariant visibility, error-model clarity, accidental
+complexity, test confidence, operational clarity, and willingness to take
+production ownership. Use efficiency only as context when quality is materially
+equivalent.
 
 Publish cases where another arm beats Proofmill. A no-winner result is valid.

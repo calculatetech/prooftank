@@ -28,6 +28,7 @@ ARMS = (
 BRIEF_SHA256 = "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5"
 PROMPT_SHA256 = "01cd99dcbd35a2391193fe0409929d86b65d173ecec1354074c285d29aa8875a"
 SPEC_KIT_COMMIT = "bd595cf838cc200f84fee9e9327b643dfe277d2c"
+HIDDEN_SUITE_SHA256 = "5822d5eca6049ba60856e76a32ca5b773504981629683329a89193f3b2b9f354"
 MODEL = "gpt-5.4"
 EFFORT = "medium"
 
@@ -67,6 +68,24 @@ def copy_tree(source: Path, destination: Path) -> None:
     if destination.exists():
         raise FileExistsError(destination)
     shutil.copytree(source, destination)
+
+
+def verify_specify(specify: Path) -> dict[str, str]:
+    python = specify.parent / "python"
+    if not python.is_file():
+        raise ValueError("specify must come from a virtual environment")
+    script = (
+        "import importlib.metadata,json;"
+        "d=importlib.metadata.distribution('specify-cli');"
+        "p=d.locate_file('specify_cli-'+d.version+'.dist-info/direct_url.json');"
+        "print(json.dumps({'version':d.version,'direct_url':json.loads(p.read_text())}))"
+    )
+    completed = run_command([str(python), "-c", script], ROOT)
+    metadata = json.loads(completed.stdout)
+    commit = metadata.get("direct_url", {}).get("vcs_info", {}).get("commit_id")
+    if commit != SPEC_KIT_COMMIT:
+        raise ValueError(f"unexpected Spec Kit commit: {commit}")
+    return {"version": metadata["version"], "commit": commit}
 
 
 def install_skills(repository: Path, arm: str) -> None:
@@ -268,19 +287,50 @@ def changed_metrics(repository: Path) -> dict:
     }
 
 
+def generated_manifest(repository: Path) -> dict[str, str]:
+    initial = json.loads((repository / "INPUT-MANIFEST.json").read_text())["files"]
+    current = file_manifest(repository)
+    current.pop("INPUT-MANIFEST.json", None)
+    return {
+        path: digest for path, digest in current.items() if initial.get(path) != digest
+    }
+
+
 def run_hidden_suite(repository: Path, output: Path) -> tuple[int, dict]:
     completed = run_command(
         [
             sys.executable,
-            str(CHECKBOOK / "hidden/run_suite.py"),
-            str(repository / "checkbook.py"),
-            "--output",
-            str(output),
+            str(CHECKBOOK / "sandbox.py"),
+            str(repository),
+            "--timeout",
+            "60",
+            "--mount",
+            f"{CHECKBOOK / 'hidden'}=/suite",
+            "--",
+            "/usr/bin/python3",
+            "/suite/run_suite.py",
+            "/candidate/checkbook.py",
         ],
         ROOT,
         check=False,
     )
-    return completed.returncode, json.loads(output.read_text())
+    try:
+        summary = json.loads(completed.stdout)
+    except json.JSONDecodeError:
+        summary = {
+            "schema_version": "1.0",
+            "implementation": "checkbook.py",
+            "tests": 0,
+            "passed": 0,
+            "failed": 1,
+            "successful": False,
+            "passed_tests": [],
+            "failures": [
+                {"test": "sandbox_runner", "detail": completed.stderr.strip()}
+            ],
+        }
+    write_json(output, summary)
+    return completed.returncode, summary
 
 
 def run_arm(
@@ -344,7 +394,7 @@ def run_arm(
     usage, tool_calls = parse_events(events)
     metrics = changed_metrics(repository)
     result = {
-        "schema_version": "1.0",
+        "schema_version": "2.0",
         "arm": arm,
         "terminal_state": terminal,
         "codex_returncode": returncode,
@@ -355,20 +405,24 @@ def run_arm(
         "model": MODEL,
         "reasoning_effort": EFFORT,
         "sandbox": "workspace-write",
+        "timeout_seconds": timeout,
         "python_version": platform.python_version(),
         "platform": platform.platform(),
+        "hidden_suite_sha256": sha256(CHECKBOOK / "hidden/run_suite.py"),
         "wall_seconds": elapsed,
         "tool_calls": tool_calls,
         "usage": usage,
         "hidden": hidden,
-        "accepted_capabilities": hidden["passed"],
-        "hidden_scenarios_passed": hidden["passed"],
-        "severe_defects": hidden["failed"],
+        "scenario_outcomes": {
+            "passed": hidden["passed_tests"],
+            "failures": hidden["failures"],
+        },
         "human_minutes": 0,
         "repair_cycles": 0,
         "cost_usd": None,
         "diagnosis_seconds": None,
         "metrics": metrics,
+        "generated_files_sha256": generated_manifest(repository),
     }
     write_json(batch / "results" / f"{arm}.json", result)
     return result
@@ -384,15 +438,69 @@ def audit_batch(batch: Path) -> dict:
     prompt_hashes = sorted({item["prompt_sha256"] for item in results})
     settings = sorted(
         {
-            (item["codex_version"], item["model"], item["reasoning_effort"])
+            (
+                item["codex_version"],
+                item["model"],
+                item["reasoning_effort"],
+                item["sandbox"],
+                item["timeout_seconds"],
+                item["python_version"],
+                item["platform"],
+            )
             for item in results
         }
     )
+    suite_hashes = sorted({item["hidden_suite_sha256"] for item in results})
+    schemas = sorted({item["schema_version"] for item in results})
+    metric_schemas = {tuple(sorted(item["metrics"])) for item in results}
+    outcomes_valid = all(
+        item.get("terminal_state") == "completed"
+        and item.get("codex_returncode") == 0
+        and item.get("hidden_returncode") == 0
+        and isinstance(item.get("hidden"), dict)
+        and item["hidden"].get("successful") is True
+        and item["hidden"].get("passed") == 15
+        and item["hidden"].get("failed") == 0
+        and item.get("scenario_outcomes", {}).get("failures") == []
+        and len(item.get("scenario_outcomes", {}).get("passed", [])) == 15
+        and isinstance(item.get("generated_files_sha256"), dict)
+        and bool(item["generated_files_sha256"])
+        for item in results
+    )
+    input_audit_path = batch / "input-audit.json"
+    input_audit = (
+        json.loads(input_audit_path.read_text()) if input_audit_path.exists() else {}
+    )
+    expected_manifests = input_audit.get("manifest_sha256", {})
+    input_audit_valid = input_audit.get("valid") is True and set(
+        expected_manifests
+    ) == set(ARMS)
+    if input_audit_valid:
+        input_audit_valid = all(
+            sha256(batch / "repositories" / arm / "INPUT-MANIFEST.json")
+            == expected_manifests[arm]
+            for arm in ARMS
+        )
+    batch_path = batch / "batch.json"
+    batch_metadata_valid = False
+    if batch_path.exists():
+        metadata = json.loads(batch_path.read_text())
+        batch_metadata_valid = (
+            metadata.get("specify", {}).get("commit") == SPEC_KIT_COMMIT
+            and metadata.get("hidden_suite_sha256") == HIDDEN_SUITE_SHA256
+        )
     comparable = (
         len(results) == len(ARMS)
+        and [item["arm"] for item in results] == list(ARMS)
         and brief_hashes == [BRIEF_SHA256]
         and prompt_hashes == [PROMPT_SHA256]
+        and suite_hashes == [HIDDEN_SUITE_SHA256]
+        and schemas == ["2.0"]
         and len(settings) == 1
+        and len(metric_schemas) == 1
+        and outcomes_valid
+        and input_audit_valid
+        and batch_metadata_valid
     )
     audit = {
         "schema_version": "1.0",
@@ -401,6 +509,12 @@ def audit_batch(batch: Path) -> dict:
         "arms_present": [item["arm"] for item in results],
         "brief_sha256_values": brief_hashes,
         "prompt_sha256_values": prompt_hashes,
+        "hidden_suite_sha256_values": suite_hashes,
+        "result_schema_versions": schemas,
+        "metric_schema_count": len(metric_schemas),
+        "outcomes_valid": outcomes_valid,
+        "input_audit_valid": input_audit_valid,
+        "batch_metadata_valid": batch_metadata_valid,
         "runner_settings": [list(item) for item in settings],
     }
     write_json(batch / "results/audit.json", audit)
@@ -417,6 +531,7 @@ def audit_inputs(batch: Path) -> dict:
     files = {arm: value["files"] for arm, value in manifests.items()}
     checks = {
         "all_arms_present": set(manifests) == set(ARMS),
+        "manifest_arm_identity": all(manifests[arm].get("arm") == arm for arm in ARMS),
         "brief_identical": all(
             value["brief_sha256"] == BRIEF_SHA256 for value in manifests.values()
         ),
@@ -467,6 +582,14 @@ def audit_inputs(batch: Path) -> dict:
             )
         ),
     }
+    required_core = {
+        ".agents/skills/speckit-specify/SKILL.md",
+        ".specify/workflows/speckit/workflow.yml",
+    }
+    checks["spec_kit_core_required_files"] = all(
+        required_core <= set(files[arm])
+        for arm in ("spec-kit-core", "proofmill-standard")
+    )
     shared_core = [
         path
         for path in files["spec-kit-core"]
@@ -474,9 +597,37 @@ def audit_inputs(batch: Path) -> dict:
         or path.startswith(".specify/scripts/")
         or path.startswith(".specify/templates/")
     ]
-    checks["spec_kit_core_bytes_identical"] = all(
+    checks["spec_kit_core_bytes_identical"] = bool(shared_core) and all(
         files["proofmill-standard"].get(path) == files["spec-kit-core"][path]
         for path in shared_core
+    )
+    release_skills = ROOT / "releases/proofmill-standard/0.1.0/skills"
+    checks["ponytail_bytes_exact"] = all(
+        files[arm].get(".agents/skills/ponytail/SKILL.md")
+        == sha256(release_skills / "ponytail/SKILL.md")
+        for arm in ("ponytail", "cavekit-ponytail", "proofmill-standard")
+    )
+    checks["proofmill_provider_bytes_exact"] = all(
+        files["proofmill-standard"].get(path) == sha256(release_skills / source)
+        for path, source in {
+            ".agents/skills/simple-english/SKILL.md": "simple-english/SKILL.md",
+            ".agents/skills/simple-english/references/checklist.md": "simple-english/references/checklist.md",
+            ".agents/skills/simple-english/references/use-cases.md": "simple-english/references/use-cases.md",
+        }.items()
+    )
+    release_components = ROOT / "releases/proofmill-standard/0.1.0/components"
+    checks["proofmill_component_bytes_exact"] = all(
+        files["proofmill-standard"].get(path) == sha256(release_components / source)
+        for path, source in {
+            ".specify/presets/proofmill-contract/preset.yml": "proofmill-contract/preset.yml",
+            ".specify/workflows/proofmill-standard/workflow.yml": "proofmill-standard-workflow/workflow.yml",
+        }.items()
+    )
+    cavekit = CHECKBOOK / "arms/cavekit-ponytail/vendor/cavekit/skills"
+    checks["cavekit_bytes_exact"] = all(
+        files["cavekit-ponytail"].get(f".agents/skills/{name}/SKILL.md")
+        == sha256(cavekit / name / "SKILL.md")
+        for name in ("spec", "build", "check", "caveman", "backprop")
     )
     audit = {
         "schema_version": "1.0",
@@ -494,6 +645,7 @@ def audit_inputs(batch: Path) -> dict:
 def prepare_batch(batch: Path, specify: Path) -> list[str]:
     if batch.exists():
         raise FileExistsError(batch)
+    specify_metadata = verify_specify(specify)
     batch.mkdir(parents=True)
     if sha256(CHECKBOOK / "PRODUCT-BRIEF.md") != BRIEF_SHA256:
         raise ValueError("frozen brief hash changed")
@@ -512,6 +664,8 @@ def prepare_batch(batch: Path, specify: Path) -> list[str]:
         "order": order,
         "arms": list(ARMS),
         "spec_kit_commit": SPEC_KIT_COMMIT,
+        "specify": specify_metadata,
+        "hidden_suite_sha256": sha256(CHECKBOOK / "hidden/run_suite.py"),
     }
     write_json(batch / "batch.json", metadata)
     return order

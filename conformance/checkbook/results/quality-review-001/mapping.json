@@ -1,0 +1,11 @@
+{
+  "mapping": {
+    "candidate-1": "cavekit-ponytail",
+    "candidate-2": "proofmill-standard",
+    "candidate-3": "ponytail",
+    "candidate-4": "spec-kit-core",
+    "candidate-5": "bare"
+  },
+  "nonce": "6cbaea89200fa0af552866bd8718cceec6f3a5f1c9819572b7f0f5c7713dd4c3",
+  "schema_version": "1.0"
+}

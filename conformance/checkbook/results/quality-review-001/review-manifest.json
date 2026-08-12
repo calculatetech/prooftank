@@ -1,0 +1,44 @@
+{
+  "batch_id": "first-comparable-001",
+  "candidates": {
+    "candidate-1": {
+      "files": {
+        "PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5",
+        "checkbook.py": "854268169b71884021e80da52eda952bb7f24b5f41c2afe3c247a654a8deb779",
+        "test_checkbook.py": "7efa81ec3f869e60be7c5ce3c134e6e886b45c45e37b1ce510e1170cce2348b6"
+      }
+    },
+    "candidate-2": {
+      "files": {
+        "PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5",
+        "checkbook.py": "f3102ecc55ee81402a964214720dd761dd655fae842fca59cafbdc8f194a3b28",
+        "test_checkbook.py": "2af1ac10d9a69023f037e832dcf08f2ddd52077a0a63ec117cf90fff1def0f2c"
+      }
+    },
+    "candidate-3": {
+      "files": {
+        "PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5",
+        "checkbook.py": "7796d1609b6acb2300a6cd7e02338eff31060e5f9a4cbc31b9b92772a1bb7436",
+        "test_checkbook.py": "8a8e809536c59d18b3603096938559dd19c145b81e59c768f97c16053ee50694"
+      }
+    },
+    "candidate-4": {
+      "files": {
+        "PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5",
+        "checkbook.py": "d4394a858298a5eb9f906a3294a3a821ceae983f92fd8ed165770b4ccf270697",
+        "test_checkbook.py": "ccd5b574566a2b8f96e6dcda09e4ca2f85f4102fdd181f4cf4294ee8f05d8a04"
+      }
+    },
+    "candidate-5": {
+      "files": {
+        "PRODUCT-BRIEF.md": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5",
+        "checkbook.py": "b6dbec21e13133ead196037ea292707cab22b5673401f666b7cc596c59903eeb",
+        "test_checkbook.py": "7453762d533d8c78b89bb386d18c19b0c498995550749fcc25f5cb8dc99f69ce"
+      }
+    }
+  },
+  "mapping_commitment": "c771e34ac4143392e9bef6232f92211e81ab1d2d682fcc3fd9d02bc3596d1081",
+  "requalification_sha256": "8f0899b0712af517e7ae2417de48b657cf1316b52708644cb3b3c87e503454f6",
+  "schema_version": "1.0",
+  "source_manifest_sha256": "ba99ef129eb138b710f579b4fc6d14fc21607313ac3a31307beaf6ad6631f0b7"
+}

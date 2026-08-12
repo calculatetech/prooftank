@@ -33,8 +33,8 @@ npx skills add AminBlg/SimpleEnglish
 ```
 
 That command selects supported agents and writes the skill to their skill
-directories. It does not pin a commit. Proofmill does not use it. Install the
-Codex-normalized directory from the pinned Proofmill release at
+directories. It does not pin a commit. ProofTank does not use it. Install the
+Codex-normalized directory from the pinned ProofTank release at
 `skills/simple-english/` into `.agents/skills/simple-english/`.
 
 Run `python3 evals/ste_lint.py --self-test` in the reviewed checkout as the
@@ -54,7 +54,7 @@ provider test. The installed health check verifies these reviewed hashes:
 The Codex installation writes `SKILL.md` and two reference files under
 `.agents/skills/simple-english/`. The installed skill declares only Codex
 compatibility. The upstream repository also includes material for other
-harnesses, prompts, examples, evaluation data, and a Python linter. Proofmill
+harnesses, prompts, examples, evaluation data, and a Python linter. ProofTank
 does not install that material.
 
 The Codex skill registers no hook, command process, daemon, or persistent state.

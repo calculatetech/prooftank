@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Proofmill distributes third-party components into coding-agent environments. These components can read repositories, write configuration, register hooks, run commands, access the network, and influence agent behavior.
+ProofTank distributes third-party components into coding-agent environments. These components can read repositories, write configuration, register hooks, run commands, access the network, and influence agent behavior.
 
 Catalog inclusion, popularity, or an MIT label is not sufficient approval.
 

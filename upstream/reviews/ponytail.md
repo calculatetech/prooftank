@@ -32,7 +32,7 @@ codex plugin add ponytail@ponytail
 ```
 
 The marketplace descriptor tracks `main`. It is useful for local experiments
-but is not the Proofmill installation path. Proofmill installs
+but is not the ProofTank installation path. ProofTank installs
 `.agents/skills/ponytail/` from the detached reviewed checkout. This exact-copy
 path omits automatic hooks and makes the source identity inspectable.
 

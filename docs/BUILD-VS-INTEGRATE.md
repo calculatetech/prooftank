@@ -2,7 +2,7 @@
 
 ## Decision rule
 
-Build a Proofmill capability only when all conditions are true:
+Build a ProofTank capability only when all conditions are true:
 
 1. The capability is required by a measured user or benchmark need.
 2. No approved upstream satisfies it.
@@ -25,19 +25,19 @@ Build a Proofmill capability only when all conditions are true:
 | Prose compression | normal prose; Caveman unreviewed | no |
 | Compact-spec and backprop ideas | Cavekit comparison only | no second spec engine |
 | Harness discovery | pinned best-of-Agent-Harnesses JSON, manual only | no |
-| Risk profile templates | Proofmill | yes, declarative |
-| Contract floor and ceiling | Proofmill preset | yes, declarative |
-| Provider qualification record | Proofmill | yes, files and tests |
+| Risk profile templates | ProofTank | yes, declarative |
+| Contract floor and ceiling | ProofTank preset | yes, declarative |
+| Provider qualification record | ProofTank | yes, files and tests |
 | Cross-harness conformance | postponed | no |
-| Checkbook benchmark | Proofmill | yes |
-| Evidence-state vocabulary | Proofmill | yes, declarative first |
+| Checkbook benchmark | ProofTank | yes |
+| Evidence-state vocabulary | ProofTank | yes, declarative first |
 | Release warrant | native tests, lint, checksums, unknowns | no measured need |
 | Provider-health command | exact provider-native checks | no measured need |
 
 ## Measured MVP decision
 
 Integrate only Codex, the pinned GitHub Spec Kit source, the exact Ponytail
-skill, and the Codex-normalized SimpleEnglish skill. Keep Proofmill code-free:
+skill, and the Codex-normalized SimpleEnglish skill. Keep ProofTank code-free:
 its owned product surface is declarative presets, workflows, policy, reviews,
 release files, and benchmark tooling.
 
@@ -47,10 +47,12 @@ maintenance signal. CodeGraph and Caveman are unreviewed backlog candidates,
 not active providers.
 
 The first comparable batch does not support a quality or lifecycle-cost benefit
-for Proofmill Standard. It supports only the narrower claim that the pinned
-Codex composition installs, carries a bounded contract, preserves unknowns, and
-can produce correct software. No new runtime, release warrant, provider-health
-layer, graph, memory, database, daemon, or adapter is authorized.
+for the historical Proofmill Standard arm, ProofTank's predecessor. ProofTank
+Standard 0.2.0 has lifecycle qualification only. The evidence supports only the
+narrower claim that the pinned Codex composition installs, carries a bounded
+contract, and preserves unknowns. No new runtime, release warrant,
+provider-health layer, graph, memory, database, daemon, or adapter is
+authorized.
 
 ## Known candidates to inspect before custom code
 
@@ -77,7 +79,7 @@ Use the exact reviewed `harnesses.json` revision from
 best-of-Agent-Harnesses only to decide what deserves primary-source inspection.
 Check its capture date, graveyard, movement, license signal, and linked evidence.
 Then inspect the named provider's own current repository before changing any
-Proofmill record.
+ProofTank record.
 
 Never install its MCP server for this check. Never change a component pin,
 qualification state, or supported harness from stars, ranks, or editorial
@@ -88,7 +90,7 @@ unknown and use manual upstream review.
 
 Do not build or integrate a release-warrant extension for the MVP. The first
 comparable benchmark gave every arm the same 15 of 15 accepted behaviors and
-showed no Proofmill quality gain. It did not expose a release decision that
+showed no ProofTank quality gain. It did not expose a release decision that
 needs another owner.
 
 The qualified `spec-gates` candidate is not a fallback: it lets a complete

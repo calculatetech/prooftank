@@ -1,4 +1,4 @@
-# Proofmill Roadmap
+# ProofTank Roadmap
 
 This file is the source of truth for product work and progress. Task identifiers
 are permanent. The original backlog items keep their numbers as `PM-001` through
@@ -18,28 +18,25 @@ Status legend:
 
 ## Active
 
-No tasks are currently active.
+No task is currently active.
 
 ## Planned next
 
-- ⏭ **PM-036 — Rename Proofmill to ProofTank.** Migrate human-facing names,
-  machine identifiers, paths, presets, workflows, policy, release metadata, and
-  checksum manifests as one bounded change. Preserve the current `0.1.0`
-  artifact until the replacement installs and passes a Codex dry run.
+No tasks are currently planned next.
 
 ## Postponed
 
 - ⏸ **PM-007 — Add Claude Code conformance.** Source, integration, provider
   failure, dispatch, and uninstall checks passed. The model-backed run is
   postponed because the project has no Claude subscription.
-- ⏸ **PM-008 — Add OpenCode conformance.** Postponed while Proofmill focuses on
+- ⏸ **PM-008 — Add OpenCode conformance.** Postponed while ProofTank focuses on
   Codex.
-- ⏸ **PM-009 — Add Pi conformance.** Postponed while Proofmill focuses on Codex.
+- ⏸ **PM-009 — Add Pi conformance.** Postponed while ProofTank focuses on Codex.
 - ⏸ **PM-010 — Normalize conformance results.** Postponed until another harness
   has a completed model-backed run.
-- ⏸ **PM-024 — Add OpenHarness conformance.** Postponed while Proofmill focuses
+- ⏸ **PM-024 — Add OpenHarness conformance.** Postponed while ProofTank focuses
   on Codex.
-- ⏸ **PM-033 — Design `proofmill-critical`.** Postponed because the bootstrap
+- ⏸ **PM-033 — Design `prooftank-critical`.** Postponed because the bootstrap
   prohibits a critical-profile workflow and its research providers are blocked.
 
 ## Planned later
@@ -47,6 +44,19 @@ No tasks are currently active.
 No tasks are currently planned later.
 
 ## Completed
+
+- ✅ **PM-036 — Rename Proofmill to ProofTank.** Current product names, machine
+  identifiers, composition paths, policy, and documentation now use ProofTank.
+  Checksummed release `0.2.0` passes its Codex install, dry-run, disable, and
+  uninstall lifecycle. Historical release `0.1.0` and frozen benchmark evidence
+  remain intact.
+- ✅ **PM-037 — Measure generated-app quality.** Two fresh blind reviewers per
+  frozen checkbook output found material quality differences despite identical
+  hidden-scenario results. Spec Kit core showed the clearest single-outcome
+  ownership. Proofmill standard did not preserve that advantage. Readability
+  and accidental complexity were uniformly good and did not distinguish arms.
+  The next benchmark investment is deterministic transition, failure, and
+  boundary checks, not more process or explanation.
 
 - ✅ **PM-035 — Clear the product and package names.** `Proofmill` was rejected
   after finding an active Python CLI with the same product, distribution, and
@@ -90,7 +100,8 @@ No tasks are currently planned later.
   No provider binary ran, and native repository tools remain the fallback.
 - ✅ **PM-019 — Run the first benchmark.** All five frozen Codex arms completed.
   Every unchanged implementation passed 15 of 15 contract-aligned scenarios.
-  Ponytail-only led measured efficiency; Proofmill added no quality gain.
+  Ponytail-only led measured efficiency. PM-037 supersedes the original
+  quality interpretation because the result lacked adversarial app audits.
 - ✅ **PM-018 — Add benchmark metrics and result preservation.** One
   standard-library controller prepares isolated arms, audits input parity,
   preserves failures, runs the external suite, and records JSON metrics with

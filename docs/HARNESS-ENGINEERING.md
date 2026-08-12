@@ -1,6 +1,6 @@
 # Harness engineering principles
 
-Proofmill applies the repository-centered lessons from OpenAI's harness engineering report.
+ProofTank applies the repository-centered lessons from OpenAI's harness engineering report.
 
 Source: https://openai.com/index/harness-engineering/
 
@@ -64,7 +64,7 @@ Do not create a cleanup platform before the repository needs one.
 
 ## Project-specific work remains necessary
 
-Proofmill can package methods, providers, templates, and checks.
+ProofTank can package methods, providers, templates, and checks.
 
 Each product still needs its own:
 
@@ -75,4 +75,4 @@ Each product still needs its own:
 - build commands;
 - test strategy.
 
-Proofmill is an assurance distribution, not a replacement for product understanding.
+ProofTank is an assurance distribution, not a replacement for product understanding.

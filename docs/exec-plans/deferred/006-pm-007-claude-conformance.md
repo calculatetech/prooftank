@@ -7,8 +7,8 @@ This ExecPlan is a living document. Maintain it according to
 
 ## Purpose / Big Picture
 
-Proofmill Standard has one positive Codex specification run. This task checks
-whether current Claude Code can install the same pinned composition, discover
+ProofTank Standard has one positive Codex specification run. This postponed
+candidate task checks whether current Claude Code can install the same pinned composition, discover
 the same contract and provider instructions, produce equivalent bounded
 artifacts, expose missing providers, and uninstall without removing repository
 truth.
@@ -130,7 +130,7 @@ authentication blocker.
 
 ## Concrete Steps
 
-Work from `/home/mbeutler/Projects/proofmill`. Use
+Work from the current ProofTank checkout. Use
 `/tmp/proofmill-speckit-venv/bin/specify` for the pinned Spec Kit CLI. Use
 `npm view` and `npx` only for the official Claude Code package. Keep detailed
 commands in `.agent/test-results/pm-007.md`.
@@ -138,7 +138,7 @@ commands in `.agent/test-results/pm-007.md`.
 Initialize the disposable target with:
 
     specify init --here --integration claude --force --ignore-agent-tools --script sh
-    specify preset add --dev /home/mbeutler/Projects/proofmill/presets/proofmill-contract --priority 10
+    specify preset add --dev /absolute/path/to/prooftank/releases/prooftank-standard/0.2.0/components/prooftank-contract --priority 10
 
 Install exact-copy providers, then test the same provider-preflight conditions
 as the standard workflow. Use non-interactive Claude print mode only if current

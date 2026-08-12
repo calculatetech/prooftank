@@ -12,7 +12,7 @@
 - Qualification state: `approved-advisory-input`.
 
 The repository also ships an MIT-licensed MCP server at release `mcp-v0.4.0`.
-Proofmill does not select or install that server.
+ProofTank does not select or install that server.
 
 ## Capability and trust
 
@@ -24,14 +24,14 @@ change that deserves primary-source review.
 
 Trust class: advisory maintenance input. Stars are popularity data. Categories,
 tiers, descriptions, and many ratings are editorial. Some deep ratings link to
-primary evidence, but the list does not qualify a component for Proofmill. It
+primary evidence, but the list does not qualify a component for ProofTank. It
 cannot add a harness, replace a pin, or create a pass state.
 
 ## Access and written state
 
 The selected method is read-only inspection of `harnesses.json` at the reviewed
 commit. A maintainer may fetch that exact file or inspect a detached checkout.
-This writes no Proofmill file beyond a deliberate human update to a review or
+This writes no ProofTank file beyond a deliberate human update to a review or
 roadmap item.
 
 The unselected MCP alternative installs `agent-harnesses-mcp` through `uvx`,
@@ -52,7 +52,7 @@ count exceeds the anonymous limit.
 
 Direct pinned inspection contacts only GitHub. Running upstream generation or
 refresh can contact the GitHub API and write all generated list artifacts. The
-selected Proofmill process runs neither. It has no hook, daemon, database,
+selected ProofTank process runs neither. It has no hook, daemon, database,
 schedule, credential, or installed command.
 
 ## Health, disable, and uninstall
@@ -69,7 +69,7 @@ reject the snapshot as a current activity signal when its age is not acceptable
 for the maintenance decision.
 
 Disable the input by skipping the manual check. Uninstall it by deleting the
-detached checkout or downloaded JSON. There is no Proofmill integration to
+detached checkout or downloaded JSON. There is no ProofTank integration to
 remove. If someone separately installed the MCP server, remove its exact agent
 configuration and `uvx` cache entry through the package manager.
 

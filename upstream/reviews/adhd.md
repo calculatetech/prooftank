@@ -34,7 +34,7 @@ separate mutable skills installer and current repository content. The manual
 Codex path writes `~/.codex/skills/adhd/SKILL.md` from mutable `main`.
 
 An exact install could copy the reviewed release skill by commit and verify its
-hash, but Proofmill does not select it. The CLI path installs
+hash, but ProofTank does not select it. The CLI path installs
 `adhd-agent@0.1.4`, requires Node 18 or newer, and registers `adhd`. It depends
 on the Claude Agent SDK, `p-limit`, and Zod. It writes no hook, daemon, database,
 MCP setting, or repository file unless the user redirects JSON output.
@@ -72,7 +72,7 @@ remain mutually isolated; cross-talk or serial execution invalidates the method.
 Its output can still converge confidently on an unsupported idea, so provider
 completion is not approval.
 
-The planned isolation comparison did not run. Proofmill permits only one
+The planned isolation comparison did not run. ProofTank permits only one
 subagent at a time, while the reviewed skill explicitly requires five parallel
 isolated agents and rejects serialization. The alternative CLI requires the
 Claude Agent SDK and authentication unavailable to this Codex-only MVP.

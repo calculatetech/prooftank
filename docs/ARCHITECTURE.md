@@ -30,9 +30,9 @@ GitHub Spec Kit owns:
 - convergence;
 - presets, extensions, workflows, catalogs, and bundles.
 
-### 3. Proofmill assurance distribution
+### 3. ProofTank assurance distribution
 
-Proofmill owns:
+ProofTank owns:
 
 - approved composition;
 - risk profiles;
@@ -116,7 +116,7 @@ A provider change requires:
 - migration or removal test;
 - no loss of authoritative repository artifacts.
 
-## Why no Proofmill runtime in version 0
+## Why no ProofTank runtime in version 0
 
 A new runtime would add:
 

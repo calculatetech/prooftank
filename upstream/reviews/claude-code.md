@@ -16,7 +16,7 @@
 
 ## Capability and trust
 
-Claude Code is an agent runtime and a required Proofmill conformance target. It
+Claude Code is an agent runtime and a postponed post-MVP conformance candidate. It
 can discover project skills, read and write repository files, run tools, and
 return structured output in non-interactive print mode.
 
@@ -37,10 +37,10 @@ latest tag for a measured conformance run.
 
 The pinned Spec Kit Claude integration writes ten `speckit-*` skill directories
 under `.claude/skills/`. It also writes the Claude integration manifest and
-active integration record under `.specify/`. The Proofmill preset and workflow
+active integration record under `.specify/`. The ProofTank preset and workflow
 remain under `.specify/`.
 
-The skills register `/speckit-*` commands. The reviewed Proofmill composition
+The skills register `/speckit-*` commands. The reviewed ProofTank composition
 registers no Claude hook, MCP server, daemon, or background process. Exact-copy
 Ponytail and SimpleEnglish skills belong under `.claude/skills/` for Claude.
 

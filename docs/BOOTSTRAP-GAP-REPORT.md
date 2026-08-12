@@ -5,9 +5,10 @@
 **Revise the product claim; do not add runtime.** The current schemas and
 installation path are valid. The corrected Codex run preserves missing evidence
 as unknown, but the first comparable benchmark found no accepted-behavior gain
-from Proofmill Standard. The composition is not a deterministic assurance gate.
+from the historical Proofmill Standard arm, ProofTank's predecessor. The
+composition is not a deterministic assurance gate.
 
-Do not build a Proofmill runtime. PM-026 screened the current candidates and
+Do not build a ProofTank runtime. PM-026 screened the current candidates and
 selected none. The full result is in
 `docs/DETERMINISTIC-GATE-QUALIFICATION.md`.
 
@@ -17,7 +18,7 @@ success when executable coverage is absent.
 
 ## What works
 
-- Spec Kit `0.16.3.dev0` accepts the Proofmill preset, workflow, and bundle
+- Spec Kit `0.16.3.dev0` accepts the ProofTank preset, workflow, and bundle
   schemas.
 - The contract preset adds a floor, a ceiling, stable IDs, failure behavior, and
   evidence mapping.
@@ -27,7 +28,7 @@ success when executable coverage is absent.
   implementation.
 - The corrected PM-030 Codex run kept absent executable coverage and human
   inspection `unknown`, excluded agent output from proof, and reviewed every
-  Proofmill contract field in its checklist.
+  ProofTank contract field in its checklist.
 - Disable and uninstall operations preserve repository truth.
 - The workflow begins with a required-provider shell check. Missing
   SimpleEnglish or Ponytail stops the standard profile before specification.
@@ -39,7 +40,7 @@ success when executable coverage is absent.
 The bundle cannot install its custom local preset and workflow in one command.
 The supported path still needs separate native component commands. PM-031 adds
 a versioned, checksummed local release directory, so those commands no longer
-depend on a mutable Proofmill checkout. A hosted install-allowed catalog remains
+depend on a mutable ProofTank checkout. A hosted install-allowed catalog remains
 optional future publication work.
 
 ### Exact agent-skill pins
@@ -94,7 +95,8 @@ Batch `first-comparable-001` ran five Codex arms with identical frozen inputs
 and runner settings. After removing two hidden-suite assertions that exceeded
 the public brief, every unchanged arm passed all 15 scenarios.
 
-Proofmill Standard did not improve accepted behavior in this batch. It used
+The historical Proofmill Standard arm did not improve accepted behavior in this
+batch. It used
 626.656 seconds, 47 tool calls, and 1,602,751 input tokens. Ponytail-only used
 224.766 seconds, 15 tool calls, and 237,746 input tokens. The bare arm produced
 the least source. The result recommends revising the product claim and testing a
@@ -149,7 +151,7 @@ endorse these components.
 - The SimpleEnglish linter cannot prove controlled-language compliance.
 - Provider output remains advisory unless a deterministic project tool supports
   the claim.
-- The completed dry run did not validate its Proofmill contract in the generated
+- The completed dry run did not validate its ProofTank contract in the generated
   checklist and mislabeled human inspection as evidence. PM-030 preserves a
   corrected positive run beside that negative result.
 
@@ -161,5 +163,6 @@ tests and lint. CBM, Cavemem, NeuroArxiv, ADHD, and spec-gates are blocked.
 Cavekit is comparison-only. CodeGraph and Caveman remain unreviewed backlog
 candidates. Non-Codex harness and critical-profile work is postponed.
 
-Public-pilot documentation and human name clearance remain. The benchmark found
-no quality gain from Proofmill Standard and authorizes no additional runtime.
+The ProofTank public pilot and working-name migration are complete. The
+benchmark found no quality gain from the historical Proofmill Standard arm and
+authorizes no additional runtime.
