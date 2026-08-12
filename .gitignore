@@ -1,0 +1,18 @@
+# Local agent and provider state
+.proofmill-local/
+.agent/test-results/
+.agent/benchmark-runs/
+.specify/cache/
+*.local.json
+
+# Benchmark run output
+benchmark/results/
+benchmark/worktrees/
+
+# Common generated files
+node_modules/
+.venv/
+__pycache__/
+dist/
+/build/
+coverage/

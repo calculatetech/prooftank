@@ -1,0 +1,6 @@
+RUN-003
+/srv/ledger/state/current.json
+"recovery marker missing"
+ledgerctl status --json
+systemctl restart ledger-api
+ledgerctl verify --operation op_017

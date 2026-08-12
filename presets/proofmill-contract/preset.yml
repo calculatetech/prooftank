@@ -1,0 +1,39 @@
+schema_version: "1.0"
+
+preset:
+  id: "proofmill-contract"
+  name: "Proofmill Contract"
+  version: "0.1.0"
+  description: "Adds a standard-risk scope boundary and evidence map to core Spec Kit artifacts."
+  author: "Proofmill"
+  repository: "https://github.com/mbeutler/proofmill"
+  license: "MIT"
+
+requires:
+  speckit_version: "==0.16.3.dev0"
+
+provides:
+  templates:
+    - type: "template"
+      name: "spec-template"
+      file: "templates/spec-template.md"
+      description: "Adds the Proofmill contract to a feature specification."
+      strategy: "append"
+      replaces: "spec-template"
+    - type: "template"
+      name: "plan-template"
+      file: "templates/plan-template.md"
+      description: "Adds the bounded work packet to an implementation plan."
+      strategy: "append"
+      replaces: "plan-template"
+    - type: "template"
+      name: "tasks-template"
+      file: "templates/tasks-template.md"
+      description: "Adds required provider and evidence tasks."
+      strategy: "append"
+      replaces: "tasks-template"
+
+tags:
+  - "assurance"
+  - "scope"
+  - "evidence"

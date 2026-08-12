@@ -1,0 +1,189 @@
+schema_version: 0.1-draft
+qualification_policy: docs/UPSTREAM-QUALIFICATION.md
+components:
+- id: github-spec-kit
+  source: https://github.com/github/spec-kit
+  version: 0.16.3.dev0
+  capability: specification-process-substrate
+  required_for:
+  - lite
+  - standard
+  - critical
+  integration: bundle-preset-workflow
+  trust: deterministic-installer-and-authoritative-artifact-host
+  qualification: pilot
+  review: upstream/reviews/github-spec-kit.md
+  pin: bd595cf838cc200f84fee9e9327b643dfe277d2c
+  fallback: none
+- id: ponytail
+  source: https://github.com/DietrichGebert/ponytail
+  version: 4.9.0
+  capability: minimal-implementation
+  required_for:
+  - lite
+  - standard
+  - critical
+  integration: agent-skill-exact-copy
+  trust: advisory
+  qualification: approved
+  review: upstream/reviews/ponytail.md
+  pin: 2ed6c52c9d7e5e56942508591085fd45dea277d3
+  skill_sha256: 1316a2f3f95741d2300b116fe0c2d81ce4a9568656ed0a62643f54aaf09957f2
+  fallback: stop-before-lite-or-standard-work
+  note: Marketplace installation tracks main and is not approved.
+- id: simple-english
+  source: https://github.com/AminBlg/SimpleEnglish
+  version: 1.2.0
+  capability: controlled-technical-language
+  required_for:
+  - standard
+  - critical
+  optional_for:
+  - lite
+  integration: agent-skill-codex-normalized-copy
+  trust: advisory-with-limited-deterministic-linter
+  qualification: approved
+  review: upstream/reviews/simple-english.md
+  pin: 59bf6702197a5aadc96d197ea17f290d8d50dcd3
+  upstream_skill_sha256: b688022acbb9b9b1293f8f3da9bc6305f8b8c6855b0c8e96ef7393e0cf256e25
+  skill_sha256: 7640dff70b1b95a1a77f00837cb678ee6e0a200ca05cbd4eb615fc21fb8806ad
+  checklist_sha256: c90c3834fa691da11e23f11ccb922ad09ddb18fbea04004ad047b5070c0ae846
+  use_cases_sha256: a875819fe39687282b893d92d9d5f91c89685a01e21ffed0579d8873d4de6a68
+  fallback: stop-before-standard-work; proofmill-writing-rules-for-lite-only
+  note: The installed copy changes only compatibility to codex. The unpinned npx installation path is not approved.
+- id: spec-gates
+  source: https://github.com/schwichtgit/spec-gates
+  version: 0.3.3
+  capability: deterministic-quality-gates
+  optional_for: []
+  integration: rejected-spec-kit-extension
+  trust: deterministic-for-explicit-checks-only
+  qualification: blocked
+  review: upstream/reviews/spec-gates.md
+  pin: b3800b9d04a7ed489b94052074c94c8980dd6d4b
+  fallback: project-native-tests-and-lint; missing-coverage-is-unknown
+  note: Complete features with no executable acceptance blocks can pass.
+- id: codebase-memory-mcp
+  source: https://github.com/DeusData/codebase-memory-mcp
+  version: 0.10.2
+  capability: structural-code-intelligence
+  optional_for: []
+  integration: rejected-independent-mcp
+  trust: observational
+  qualification: blocked-product-boundary
+  review: upstream/reviews/codebase-memory-mcp.md
+  pin: b377c62a4e8b7ad64ccd295e4aa88abc8d275180
+  fallback: native-search-and-project-tools
+  note: Its first useful operation creates a persistent code graph and SQLite state; MCP sessions also start a daemon.
+- id: codegraph
+  source: https://github.com/colbymchenry/codegraph
+  capability: structural-code-intelligence-alternative
+  optional_for:
+  - standard
+  - critical
+  integration: independent-mcp-or-cli
+  trust: observational
+  qualification: pending-correctness-and-stability-pilot
+  pin: null
+  fallback: native-search-and-project-tools
+- id: neuroarxiv
+  source: https://github.com/UditAkhourii/neuroarxiv
+  version: 0.1.0-unreleased
+  capability: prior-art-research
+  required_for: []
+  integration: rejected-claude-skill-and-cli
+  trust: advisory
+  qualification: blocked-codex-mvp
+  review: upstream/reviews/neuroarxiv.md
+  pin: b5d20efa12dd1ba177ce890d56809d2e027f8055
+  fallback: documented-manual-research
+  note: No release exists; the CLI requires the Claude Agent SDK and its installer writes only a Claude skill.
+- id: adhd
+  source: https://github.com/UditAkhourii/adhd
+  version: 0.1.4
+  capability: divergent-design-review
+  required_for: []
+  integration: rejected-agent-skill-and-cli
+  trust: advisory
+  qualification: blocked-process-and-runtime
+  review: upstream/reviews/adhd.md
+  pin: 770834e3e2f56f2620f835253996c3eb143b72ed
+  skill_sha256: a0624f0ca1ccc45184f858cefdf02034b359b7706132edda2ddea7449dc29b70
+  npm_integrity: sha512-j/UzhOd8VjMcjStw/Hx3etAT5WrSSunGZcMjKJ3gsLzNWenOkvOzk/A1f6hgYtLpwTyowquz3guA/c8GxWWw8g==
+  fallback: isolated-multi-review-workflow
+  note: The skill requires parallel isolated branches, which conflicts with the one-subagent rule; its CLI requires Claude.
+- id: cavemem
+  source: https://github.com/JuliusBrussee/cavemem
+  version: 0.2.1
+  capability: cross-session-memory
+  optional_for: []
+  integration: rejected-hooks-and-mcp
+  trust: memory
+  qualification: blocked-product-boundary
+  review: upstream/reviews/cavemem.md
+  pin: e934e436e0dcb68422475d85385f7f8eb5e449b1
+  npm_integrity: sha512-sujtPDxbgyFTNT8d3yREFDYLTbkCTTvcBIN0VIvVER/4qtx2cH64b9oEDmL1m0usfpNAo4Il8H058shoGZTFFA==
+  fallback: repository-docs-and-git
+  note: Persistent SQLite memory is outside the MVP boundary; release 0.2.1 also writes an obsolete Codex config.json shape.
+- id: cavekit
+  source: https://github.com/JuliusBrussee/cavekit
+  version: 4.1.0
+  capability: spec-design-reference
+  optional_for: []
+  integration: exact-skill-copy-comparison-only
+  trust: advisory
+  qualification: approved-comparison-only
+  review: upstream/reviews/cavekit.md
+  pin: c322f0bb6db82163041930467f3ce32754d42827
+  fallback: separately-measured-ponytail-arm
+  note: Do not enable as a second authoritative specification owner.
+- id: caveman
+  source: https://github.com/JuliusBrussee/caveman
+  capability: optional-output-compression
+  optional_for:
+  - lite
+  - standard
+  - critical
+  integration: agent-skill
+  trust: presentation-only
+  qualification: pending-current-api-audit
+  pin: null
+  fallback: normal-prose
+- id: pi
+  source: https://github.com/earendil-works/pi
+  homepage: https://pi.dev/
+  capability: neutral-agent-runtime
+  role: postponed-post-mvp-conformance-candidate
+  trust: runtime
+  qualification: postponed-mvp-codex-only
+  pin: null
+- id: claude-code
+  source: https://github.com/anthropics/claude-code
+  package: '@anthropic-ai/claude-code'
+  version: 2.1.228
+  capability: agent-runtime
+  role: postponed-post-mvp-conformance-candidate
+  trust: runtime
+  qualification: postponed-no-subscription
+  review: upstream/reviews/claude-code.md
+  pin: 681a8be245e7759a405e276b16ae69ea6b75076f
+  npm_integrity: sha512-S3Iy+c6ZuFjswQOekbVgXA+RxAuU8H2ae2nxFynqmvR5r3Gm9oyFV19XgiuatYRFKKjxP0K3i5vvvelPDgx12g==
+  fallback: preserved-codex-reference; claude-evidence-remains-unknown
+- id: openharness
+  source: https://github.com/HKUDS/OpenHarness
+  capability: full-open-agent-runtime
+  role: postponed-post-mvp-conformance-candidate
+  trust: runtime
+  qualification: postponed-mvp-codex-only
+  pin: null
+- id: best-of-agent-harnesses
+  source: https://github.com/RyanAlberts/best-of-Agent-Harnesses
+  capability: ecosystem-sustainability-feed
+  role: maintenance-input
+  trust: advisory
+  qualification: approved-advisory-input
+  review: upstream/reviews/best-of-agent-harnesses.md
+  pin: c81b202ce6388c2d56c56f049dabf413288bb9da
+  license: CC-BY-SA-4.0
+  fallback: manual-upstream-review
+  note: Inspect pinned harnesses.json manually; never update a component or harness pin from ranking data.

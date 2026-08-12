@@ -1,0 +1,4 @@
+Read PRODUCT-BRIEF.md. Implement the complete product in this repository. Use
+only the files, skills, and process installed in this arm. Add and run focused
+tests. Do not ask questions. Do not read outside this repository. Stop when the
+brief is implemented and repository checks pass.

@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "id": "spec-kit-core",
+  "label": "Spec Kit core",
+  "treatment": "github-spec-kit-core",
+  "pins": {
+    "github-spec-kit": "bd595cf838cc200f84fee9e9327b643dfe277d2c"
+  }
+}

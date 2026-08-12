@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "id": "proofmill-standard",
+  "label": "Proofmill Standard",
+  "treatment": "proofmill-standard-release",
+  "pins": {
+    "github-spec-kit": "bd595cf838cc200f84fee9e9327b643dfe277d2c",
+    "ponytail": "2ed6c52c9d7e5e56942508591085fd45dea277d3",
+    "proofmill-standard": "0.1.0",
+    "simple-english": "59bf6702197a5aadc96d197ea17f290d8d50dcd3"
+  }
+}

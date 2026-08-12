@@ -1,0 +1,7 @@
+REQ-017
+INV-004
+POST /v1/ledger
+specs/017-ledger/spec.md
+"ledger version mismatch"
+if version != expected_version:
+raise ConflictError("ledger version mismatch")

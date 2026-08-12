@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "id": "cavekit-ponytail",
+  "label": "Cavekit plus Ponytail",
+  "treatment": "cavekit-and-ponytail-skills",
+  "pins": {
+    "cavekit": "c322f0bb6db82163041930467f3ce32754d42827",
+    "ponytail": "2ed6c52c9d7e5e56942508591085fd45dea277d3"
+  }
+}

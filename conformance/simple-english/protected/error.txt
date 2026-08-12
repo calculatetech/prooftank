@@ -1,0 +1,5 @@
+LEDGER_CONFLICT
+expectedVersion
+/var/log/proofmill/ledger.log
+"ledger version mismatch"
+ledgerctl show --operation op_017

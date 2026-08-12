@@ -1,0 +1,9 @@
+WP-009
+src/ledger/service.py
+pytest tests/test_ledger.py -q
+must_do:
+preserve INV-004
+must_not_do:
+add a queue
+stop_when:
+REQ-017 passes

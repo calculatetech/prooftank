@@ -1,0 +1,41 @@
+schema_version: "0.1"
+
+release:
+  id: proofmill-standard
+  version: 0.1.0
+  target: codex
+  license: MIT
+  license_file: licenses/proofmill-LICENSE
+  checksums: SHA256SUMS
+
+requires:
+  github-spec-kit:
+    version: 0.16.3.dev0
+    pin: bd595cf838cc200f84fee9e9327b643dfe277d2c
+
+components:
+  - id: proofmill-contract
+    type: preset
+    version: 0.1.0
+    path: components/proofmill-contract
+  - id: proofmill-standard
+    type: workflow
+    version: 0.1.0
+    path: components/proofmill-standard-workflow
+  - id: ponytail
+    type: agent-skill
+    version: 4.9.0
+    source: https://github.com/DietrichGebert/ponytail
+    pin: 2ed6c52c9d7e5e56942508591085fd45dea277d3
+    path: skills/ponytail
+    license: licenses/ponytail-LICENSE
+  - id: simple-english
+    type: agent-skill
+    version: 1.2.0
+    source: https://github.com/AminBlg/SimpleEnglish
+    pin: 59bf6702197a5aadc96d197ea17f290d8d50dcd3
+    upstream_skill_sha256: b688022acbb9b9b1293f8f3da9bc6305f8b8c6855b0c8e96ef7393e0cf256e25
+    installed_skill_sha256: 7640dff70b1b95a1a77f00837cb678ee6e0a200ca05cbd4eb615fc21fb8806ad
+    normalization: compatibility-codex-only
+    path: skills/simple-english
+    license: licenses/simple-english-LICENSE

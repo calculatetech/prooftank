@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "batch_id": "first-comparable-001",
+  "comparable": true,
+  "run_order": [
+    "proofmill-standard",
+    "cavekit-ponytail",
+    "ponytail",
+    "bare",
+    "spec-kit-core"
+  ],
+  "runner": {
+    "runtime": "codex",
+    "codex_version": "codex-cli 0.147.0",
+    "model": "gpt-5.4",
+    "reasoning_effort": "medium",
+    "sandbox": "workspace-write"
+  },
+  "inputs": {
+    "brief_sha256": "6588b63ee0996ed3141cd41b0640f0ce6ff7ff58dec7e271d2d28c10ae4956e5",
+    "prompt_sha256": "01cd99dcbd35a2391193fe0409929d86b65d173ecec1354074c285d29aa8875a",
+    "scoring_suite_sha256": "5822d5eca6049ba60856e76a32ca5b773504981629683329a89193f3b2b9f354"
+  },
+  "arms": {
+    "bare": {
+      "terminal_state": "completed",
+      "hidden_scenarios_passed": 15,
+      "hidden_scenarios_total": 15,
+      "wall_seconds": 268.183,
+      "tool_calls": 16,
+      "input_tokens": 312996,
+      "cached_input_tokens": 279424,
+      "output_tokens": 13783,
+      "reasoning_output_tokens": 3014,
+      "source_lines": 548,
+      "test_lines": 133,
+      "specification_lines": 0,
+      "deliverable_files": 2,
+      "external_dependencies": 0
+    },
+    "ponytail": {
+      "terminal_state": "completed",
+      "hidden_scenarios_passed": 15,
+      "hidden_scenarios_total": 15,
+      "wall_seconds": 224.766,
+      "tool_calls": 15,
+      "input_tokens": 237746,
+      "cached_input_tokens": 215168,
+      "output_tokens": 11687,
+      "reasoning_output_tokens": 2592,
+      "source_lines": 571,
+      "test_lines": 116,
+      "specification_lines": 0,
+      "deliverable_files": 2,
+      "external_dependencies": 0
+    },
+    "cavekit-ponytail": {
+      "terminal_state": "completed",
+      "hidden_scenarios_passed": 15,
+      "hidden_scenarios_total": 15,
+      "wall_seconds": 514.037,
+      "tool_calls": 37,
+      "input_tokens": 752641,
+      "cached_input_tokens": 694144,
+      "output_tokens": 21890,
+      "reasoning_output_tokens": 7232,
+      "source_lines": 611,
+      "test_lines": 218,
+      "specification_lines": 69,
+      "deliverable_files": 3,
+      "external_dependencies": 0
+    },
+    "spec-kit-core": {
+      "terminal_state": "completed",
+      "hidden_scenarios_passed": 15,
+      "hidden_scenarios_total": 15,
+      "wall_seconds": 630.492,
+      "tool_calls": 50,
+      "input_tokens": 1786773,
+      "cached_input_tokens": 1695232,
+      "output_tokens": 29722,
+      "reasoning_output_tokens": 6623,
+      "source_lines": 745,
+      "test_lines": 209,
+      "specification_lines": 525,
+      "deliverable_files": 12,
+      "external_dependencies": 0
+    },
+    "proofmill-standard": {
+      "terminal_state": "completed",
+      "hidden_scenarios_passed": 15,
+      "hidden_scenarios_total": 15,
+      "wall_seconds": 626.656,
+      "tool_calls": 47,
+      "input_tokens": 1602751,
+      "cached_input_tokens": 1517184,
+      "output_tokens": 27102,
+      "reasoning_output_tokens": 5152,
+      "source_lines": 682,
+      "test_lines": 226,
+      "specification_lines": 551,
+      "deliverable_files": 12,
+      "external_dependencies": 0
+    }
+  },
+  "result": {
+    "quality_winner": null,
+    "efficiency_leader": "ponytail",
+    "smallest_source": "bare",
+    "proofmill_claim_supported": false
+  },
+  "unknown": [
+    "cost_usd",
+    "diagnosis_seconds",
+    "mutation_score",
+    "regression_after_change",
+    "unrequested_source_lines",
+    "one_implementation_abstractions",
+    "replicate_variance"
+  ]
+}
